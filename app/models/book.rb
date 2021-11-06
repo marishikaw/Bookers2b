@@ -13,7 +13,12 @@ class Book < ApplicationRecord
 	scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
 	scope :created_yesterday, -> { where(created_at: Time.zone.yesterday.all_day) }
 	
+	thisWeek_to = Time.current.at_end_of_day
+	thisWeek_from = (thisWeek_to - 6.day).at_beginning_of_day
+	scope :created_thisweek, -> { where(created_at: thisWeek_from...thisWeek_to) }
 	
+	lastWeek_to = (thisWeek_to - 7.day).at_beginning_of_day
+	lastWeek_from = (lastWeek_to - 6.day).at_beginning_of_day
+	scope :created_lastweek, -> { where(created_at: lastWeek_from...lastWeek_to) }
 	
-	scope :created_thisweek, -> { where(created_at: from...to) }
 end
