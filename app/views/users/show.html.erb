@@ -11,7 +11,7 @@
       <%= render 'books/index',books: @books %>
       
       
-      <h2>投稿数の前日比・前週比</h2>
+      <h3>投稿数の前日比・前週比</h3>
       <div class = "table_width">
        <table class="table table-bordered">
         <thead>
@@ -64,27 +64,33 @@
        </table>
       </div>
       
-      <!--<div class = "table_width">-->
-      <!-- <table class="table table-bordered">-->
-      <!--  <thead>-->
-      <!--   <tr>-->
-      <!--    <th>６日前</th>-->
-      <!--    <th>５日前</th>-->
-      <!--    <th>４日前</th>-->
-      <!--    <th>３日前</th>-->
-      <!--    <th>２日前</th>-->
-      <!--    <th>１日前</th>-->
-      <!--    <th>今日</th>-->
-      <!--   </tr>-->
-      <!--  </thead>-->
-      <!--  <tbody>-->
-      <!--   <tr>-->
-      <!--   　<td></td>-->
-
-      <!--   </tr>-->
-      <!--  </tbody>-->
-      <!-- </table>-->
-      <!--</div>-->
+      <h3>７日間分の投稿数</h3>
+      <div class = "table_width">
+       <table class="table table-bordered">
+        <thead>
+         <tr>
+          <th>６日前</th>
+          <th>５日前</th>
+          <th>４日前</th>
+          <th>３日前</th>
+          <th>２日前</th>
+          <th>１日前</th>
+          <th>今日</th>
+         </tr>
+        </thead>
+        <tbody>
+         <tr>
+           <td><%= @books.created_days_ago(6).count %></td>
+         　<td><%= @books.created_days_ago(5).count %></td>
+         　<td><%= @books.created_days_ago(4).count %></td>
+         　<td><%= @books.created_days_ago(3).count %></td>
+         　<td><%= @books.created_days_ago(2).count %></td>
+         　<td><%= @books.created_days_ago(1).count %></td>
+         　<td><%= @books.created_days_ago(0).count %></td>
+         </tr>
+        </tbody>
+       </table>
+      </div>
       
     </div>
   </div>

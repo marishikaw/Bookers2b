@@ -21,9 +21,5 @@ class Book < ApplicationRecord
 	lastWeek_to = 7.day.ago.end_of_day
 	scope :created_lastweek, -> { where(created_at: lastWeek_from...lastWeek_to) }
 	
-	# scope :created_two_days_ago, -> { where(created_at: (today - 2.day).all_day) }
-	# scope :created_three_days_ago, -> { where(created_at: (today - 3.day).all_day) }
-	# scope :created_four_days_ago, -> { where(created_at: (today - 4.day).all_day) }
-	# scope :created_five_days_ago, -> { where(created_at: (today - 5.day).all_day) }
-	# scope :created_six_days_ago, -> { where(created_at: (today - 6.day).all_day) }
+	scope :created_days_ago, ->(n) { where(created_at: n.days.ago.all_day) }
 end
